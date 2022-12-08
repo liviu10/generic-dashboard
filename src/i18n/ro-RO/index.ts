@@ -1,4 +1,4 @@
-// English translations
+// Romanian translations
 
 export default {
   //
