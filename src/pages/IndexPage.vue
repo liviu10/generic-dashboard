@@ -18,11 +18,43 @@
       :buttonTextColor="'white'"
       :buttonDense="false"
       :buttonRound="false"
-    >
-    </GenericButton>
+    />
+    <GenericIcon :iconName="'done'" :iconSize="'md'" :iconColor="'primary'" />
+    <GenericList
+      :listSeparator="true"
+      :listPadding="false"
+      :listBordered="true"
+      :listDense="true"
+      :listItemSection="[
+        {
+          id: 1,
+          content: 'First item',
+          itemProps: {
+            disable: true,
+            clickable: true,
+          },
+        },
+        {
+          id: 2,
+          content: 'Second item',
+          itemProps: {
+            clickable: true,
+          },
+        },
+        {
+          id: 3,
+          content: 'Third item',
+          itemProps: {
+            clickable: true,
+          },
+        },
+      ]"
+    />
   </q-page>
 </template>
 
 <script setup lang="ts">
 import GenericButton from 'src/components/GenericButton.vue';
+import GenericIcon from 'src/components/GenericIcon.vue';
+import GenericList from 'src/components/GenericList.vue';
 </script>

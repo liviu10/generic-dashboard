@@ -22,7 +22,7 @@
 
 <script setup lang="ts">
 interface ButtonProps {
-  buttonLabel?: string | number;
+  buttonLabel: string | number;
   buttonIcon?: string;
   buttonNoCaps?: boolean;
   buttonNoWrap?: boolean;
