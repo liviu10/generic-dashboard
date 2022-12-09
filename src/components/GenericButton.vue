@@ -1,54 +1,55 @@
 <template>
   <q-btn
-    :label="buttonLabel"
-    :icon="buttonIcon"
-    :no-caps="buttonNoCaps"
-    :no-wrap="buttonNoWrap"
-    :stack="buttonStack"
-    :type="buttonType"
-    :disable="buttonDisable"
-    :size="buttonSize"
-    :outline="buttonOutline"
-    :flat="buttonFlat"
-    :rounded="buttonRounded"
-    :square="buttonSquare"
-    :padding="buttonPadding"
-    :color="buttonColor"
-    :text-color="buttonTextColor"
-    :dense="buttonDense"
-    :round="buttonRound"
+    :label="contentProps.label"
+    :icon="contentProps.icon"
+    :no-caps="contentProps.noCaps"
+    :no-wrap="contentProps.noWrap"
+    :stack="contentProps.stack"
+    :type="type"
+    :disable="disable"
+    :size="sizeProps?.size"
+    :outline="sizeProps?.outline"
+    :flat="sizeProps?.flat"
+    :rounded="sizeProps?.rounded"
+    :square="sizeProps?.square"
+    :padding="sizeProps?.padding"
+    :color="sizeProps?.color"
+    :text-color="sizeProps?.textColor"
+    :dense="sizeProps?.dense"
+    :round="sizeProps?.round"
   />
 </template>
 
 <script setup lang="ts">
 interface ButtonProps {
-  buttonLabel: string | number;
-  buttonIcon?: string;
-  buttonNoCaps?: boolean;
-  buttonNoWrap?: boolean;
-  buttonStack?: boolean;
-  buttonType?: string;
-  buttonDisable?: boolean;
-  buttonSize?: string;
-  buttonOutline?: boolean;
-  buttonFlat?: boolean;
-  buttonRounded?: boolean;
-  buttonSquare?: boolean;
-  buttonPadding?: string;
-  buttonColor?: string;
-  buttonTextColor?: string;
-  buttonDense?: boolean;
-  buttonRound?: boolean;
+  contentProps: {
+    label: string | number;
+    icon?: string;
+    noCaps?: boolean;
+    noWrap?: boolean;
+    stack?: boolean;
+  };
+  type: string;
+  disable?: boolean;
+  sizeProps?: {
+    size?: string;
+    outline?: boolean;
+    flat?: boolean;
+    rounded?: boolean;
+    square?: boolean;
+    padding?: string;
+    color?: string;
+    textColor?: string;
+    dense?: boolean;
+    round?: boolean;
+  }
 }
-withDefaults(defineProps<ButtonProps>(), {
-  buttonLabel: 'Standard button',
-});
+withDefaults(defineProps<ButtonProps>(), {});
 </script>
 
 <style lang="scss" scoped>
 .q-btn {
   display: unset;
-  position: unset;
   vertical-align: unset;
   font-size: 16px !important;
   line-height: normal;

@@ -1,60 +1,71 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    <GenericButton
-      :buttonLabel="'Generic button'"
-      :buttonIcon="'done'"
-      :buttonNoCaps="true"
-      :buttonNoWrap="true"
-      :buttonStack="false"
-      :buttonType="'button'"
-      :buttonDisable="false"
-      :buttonSize="'md'"
-      :buttonOutline="false"
-      :buttonFlat="false"
-      :buttonRounded="false"
-      :buttonSquare="true"
-      :buttonPadding="'sm'"
-      :buttonColor="'primary'"
-      :buttonTextColor="'white'"
-      :buttonDense="false"
-      :buttonRound="false"
-    />
-    <GenericIcon :iconName="'done'" :iconSize="'md'" :iconColor="'primary'" />
-    <GenericList
-      :listSeparator="true"
-      :listPadding="false"
-      :listBordered="true"
-      :listDense="true"
-      :listItemSection="[
-        {
-          id: 1,
-          content: 'First item',
-          itemProps: {
-            disable: true,
-            clickable: true,
-          },
+    <GenericCard
+      :cardStyleProps="{
+        square: true,
+        bordered: true,
+        dimensions: {
+          width: '300px',
+          height: 'auto',
         },
-        {
-          id: 2,
-          content: 'Second item',
-          itemProps: {
-            clickable: true,
-          },
+      }"
+      :cardSectionProps="{
+        showCloseButton: true,
+        horizontal: false,
+        content: {
+          title: 'Card title',
+          text: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa illum id, in itaque odit nemo ex, soluta sint quae hic voluptatem aspernatur quam nihil incidunt alias nostrum quis? Eaque, quia!',
         },
-        {
-          id: 3,
-          content: 'Third item',
-          itemProps: {
-            clickable: true,
+      }"
+      :separatorShow="true"
+      :cardActionProps="{
+        show: true,
+        buttons: [
+          {
+            id: 1,
+            contentProps: {
+              label: 'Cancel',
+            },
+            type: 'button',
+            sizeProps: {
+              size: 'sm',
+              square: true,
+              padding: 'sm',
+              color: 'negative',
+              textColor: 'white',
+            },
           },
-        },
-      ]"
+          {
+            id: 2,
+            contentProps: {
+              label: 'Save',
+            },
+            type: 'button',
+            sizeProps: {
+              size: 'sm',
+              square: true,
+              padding: 'sm',
+              color: 'positive',
+              textColor: 'white',
+            },
+          }
+        ]
+      }"
+      @onCancelAction="onCancelAction"
+      @onOkAction="onOkAction"
     />
   </q-page>
 </template>
 
 <script setup lang="ts">
-import GenericButton from 'src/components/GenericButton.vue';
-import GenericIcon from 'src/components/GenericIcon.vue';
-import GenericList from 'src/components/GenericList.vue';
+import GenericCard from 'src/components/GenericCard.vue';
+
+function onCancelAction(value: boolean) {
+  console.log(value)
+  debugger
+}
+function onOkAction(value: boolean) {
+  console.log(value)
+  debugger
+}
 </script>
