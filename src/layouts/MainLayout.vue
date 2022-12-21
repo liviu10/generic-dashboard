@@ -1,6 +1,7 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header elevated>
+  <q-layout view="lHh Lpr lFf" class="main">
+    <!-- HEADER SECTION START -->
+    <q-header elevated class="main main__header">
       <q-toolbar>
         <q-btn
           flat
@@ -8,95 +9,107 @@
           round
           icon="menu"
           aria-label="Menu"
-          @click="toggleLeftDrawer"
+          @click="toggleLeftDrawer()"
         />
-
-        <q-toolbar-title>
-          Quasar App
+        <q-toolbar-title class="main main__header__title">
+          {{ displayApplicationTitle() }}
         </q-toolbar-title>
-
-        <div>Quasar v{{ $q.version }}</div>
       </q-toolbar>
     </q-header>
+    <!-- HEADER SECTION END -->
 
+    <!-- NAVIGATION BAR SECTION START -->
     <q-drawer
       v-model="leftDrawerOpen"
       show-if-above
       bordered
+      class="main main__drawer"
     >
-      <q-list>
-        <q-item-label
-          header
-        >
-          Essential Links
-        </q-item-label>
-
-        <EssentialLink
-          v-for="link in essentialLinks"
+      <q-list class="main main__drawer__list">
+        <MainLayoutNavigationBar
+          v-for="link in navigationBarLinks"
           :key="link.title"
           v-bind="link"
+          class="main main__drawer__list__item"
         />
       </q-list>
     </q-drawer>
+    <!-- NAVIGATION BAR SECTION END -->
 
-    <q-page-container>
+    <!-- MAIN CONTAINER SECTION START -->
+    <q-page-container class="main main__container">
       <router-view />
     </q-page-container>
+    <!-- MAIN CONTAINER SECTION END -->
+
+    <!-- FOOTER SECTION START -->
+    <q-footer elevated class="main main__footer">
+      <q-toolbar>
+        <div class="main main__footer__title">
+          <p>
+            <span>{{ displayApplicationTitle() }}</span>
+            {{ displayCopyrightInfo() }}
+          </p>
+        </div>
+      </q-toolbar>
+      <q-toolbar>
+        <div class="main main__footer__designer">
+          <p>
+            Designed by
+            <a :href="designerContactUrl">{{ designerName }}</a>
+          </p>
+        </div>
+      </q-toolbar>
+    </q-footer>
+    <!-- FOOTER SECTION END -->
   </q-layout>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import EssentialLink from 'components/EssentialLink.vue';
+// Import framework related utilities
+import { Ref, ref } from 'vue';
 
-const essentialLinks = [
-  {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
-  },
-  {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
-  },
-  {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
-  },
-  {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
-  },
-  {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
-  },
-  {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
-  },
-  {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
+// Import necessary components
+import MainLayoutNavigationBar from 'src/components/MainLayoutNavigationBar.vue';
+
+// Display the application name and version
+let applicationTitle: Ref<string | undefined> = ref(undefined);
+let applicationVersion: Ref<string | undefined> = ref(undefined);
+function displayApplicationTitle() {
+  applicationTitle.value = 'Generic Dashboard';
+  if (applicationVersion.value === undefined) {
+    return applicationTitle.value;
+  } else {
+    return applicationTitle.value + applicationVersion.value;
   }
-];
-
-const leftDrawerOpen = ref(false)
-
-function toggleLeftDrawer() {
-  leftDrawerOpen.value = !leftDrawerOpen.value
 }
+
+// Navigation bar related functions and utilities
+let leftDrawerOpen: Ref<boolean> = ref(false);
+let navigationBarLinks: Ref<
+  {
+    title: string;
+    caption?: string;
+    icon?: string;
+    link: string;
+  }[]
+> = ref([
+  {
+    title: 'Documentation',
+    caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    icon: 'school',
+    link: '#',
+  },
+]);
+function toggleLeftDrawer() {
+  leftDrawerOpen.value = !leftDrawerOpen.value;
+}
+
+// Footer related functions and utilities
+function displayCopyrightInfo() {
+  const currentYear: number = new Date().getFullYear();
+  return 'Copyright © ' + currentYear + ' All right reserved';
+}
+let designerContactUrl: Ref<string> = ref('#');
+let designerName: Ref<string> = ref('Liviu Voica');
 </script>

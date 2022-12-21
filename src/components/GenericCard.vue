@@ -93,7 +93,7 @@ interface CardProps {
 function eventAction(buttonLabel: string) {
   console.log('--> eventAction function: ', buttonLabel)
   debugger
-  if ()
+  if (1 == 1)
   {
     defineEmits<{
       (event: 'onCancelAction', value: boolean): void

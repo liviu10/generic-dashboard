@@ -1,1 +1,44 @@
-// app global css in SCSS form
+/* Application's SCSS styles */
+
+@import 'src/css/utilities/_rem_convertor.scss';
+
+.main {
+  &__header {
+    &__title {
+    }
+  }
+  &__drawer {
+    &__list {
+      &__item {
+        padding-left: rem-convertor(8px);
+        padding-right: rem-convertor(8px);
+        & .q-item__section {
+          &--side {
+            align-items: center;
+            padding-right: rem-convertor(8px);
+          }
+          & .q-item__label {
+            margin-top: 0rem;
+          }
+        }
+      }
+    }
+  }
+  &__footer {
+    padding-top: rem-convertor(16px);
+    padding-bottom: rem-convertor(5px);
+    & .q-toolbar {
+      justify-content: center;
+      min-height: auto;
+    }
+    &__title,
+    &__designer {
+      & p {
+        margin-bottom: 0rem;
+        font-size: rem-convertor(12px);
+      }
+    }
+    &__designer {
+    }
+  }
+}
