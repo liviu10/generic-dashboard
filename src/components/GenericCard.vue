@@ -91,18 +91,14 @@ interface CardProps {
   };
 }
 function eventAction(buttonLabel: string) {
-  console.log('--> eventAction function: ', buttonLabel)
-  debugger
-  if (1 == 1)
-  {
+  console.log('--> eventAction function: ', buttonLabel);
+  debugger;
+  if (1 == 1) {
     defineEmits<{
-      (event: 'onCancelAction', value: boolean): void
-      (event: 'onOkAction', value: boolean): void
-    }>()
-  }
-  else
-  {
-
+      (event: 'onCancelAction', value: boolean): void;
+      (event: 'onOkAction', value: boolean): void;
+    }>();
+  } else {
   }
 }
 withDefaults(defineProps<CardProps>(), {});

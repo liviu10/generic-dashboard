@@ -42,7 +42,7 @@ interface ButtonProps {
     textColor?: string;
     dense?: boolean;
     round?: boolean;
-  }
+  };
 }
 withDefaults(defineProps<ButtonProps>(), {});
 </script>

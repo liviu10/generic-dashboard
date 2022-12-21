@@ -1,21 +1,14 @@
 <template>
   <q-layout view="lHh Lpr lFf" class="main">
     <!-- HEADER SECTION START -->
-    <q-header elevated class="main main__header">
-      <q-toolbar>
-        <q-btn
-          flat
-          dense
-          round
-          icon="menu"
-          aria-label="Menu"
-          @click="toggleLeftDrawer()"
-        />
-        <q-toolbar-title class="main main__header__title">
-          {{ displayApplicationTitle() }}
-        </q-toolbar-title>
-      </q-toolbar>
-    </q-header>
+    <MainLayoutHeader
+      :application-title="
+        typeof displayApplicationTitle() === 'string'
+          ? displayApplicationTitle()
+          : 'Generic Dashboard'
+      "
+      @toggleLeftDrawer="toggleLeftDrawer()"
+    />
     <!-- HEADER SECTION END -->
 
     <!-- NAVIGATION BAR SECTION START -->
@@ -43,24 +36,20 @@
     <!-- MAIN CONTAINER SECTION END -->
 
     <!-- FOOTER SECTION START -->
-    <q-footer elevated class="main main__footer">
-      <q-toolbar>
-        <div class="main main__footer__title">
-          <p>
-            <span>{{ displayApplicationTitle() }}</span>
-            {{ displayCopyrightInfo() }}
-          </p>
-        </div>
-      </q-toolbar>
-      <q-toolbar>
-        <div class="main main__footer__designer">
-          <p>
-            Designed by
-            <a :href="designerContactUrl">{{ designerName }}</a>
-          </p>
-        </div>
-      </q-toolbar>
-    </q-footer>
+    <MainLayoutFooter
+      :application-title="
+        typeof displayApplicationTitle() === 'string'
+          ? displayApplicationTitle()
+          : 'Generic Dashboard'
+      "
+      :copyright-info="
+        typeof displayCopyrightInfo() === 'string'
+          ? displayCopyrightInfo()
+          : 'Copyright © ' + new Date().getFullYear() + ' All right reserved'
+      "
+      :designer-contact-url="designerContactUrl ? designerContactUrl : '#'"
+      :designer-name="designerName ? designerName : 'Full name'"
+    />
     <!-- FOOTER SECTION END -->
   </q-layout>
 </template>
@@ -70,12 +59,14 @@
 import { Ref, ref } from 'vue';
 
 // Import necessary components
+import MainLayoutHeader from 'src/components/MainLayoutHeader.vue';
 import MainLayoutNavigationBar from 'src/components/MainLayoutNavigationBar.vue';
+import MainLayoutFooter from 'src/components/MainLayoutFooter.vue';
 
 // Display the application name and version
 let applicationTitle: Ref<string | undefined> = ref(undefined);
 let applicationVersion: Ref<string | undefined> = ref(undefined);
-function displayApplicationTitle() {
+function displayApplicationTitle(): string {
   applicationTitle.value = 'Generic Dashboard';
   if (applicationVersion.value === undefined) {
     return applicationTitle.value;
@@ -106,7 +97,7 @@ function toggleLeftDrawer() {
 }
 
 // Footer related functions and utilities
-function displayCopyrightInfo() {
+function displayCopyrightInfo(): string {
   const currentYear: number = new Date().getFullYear();
   return 'Copyright © ' + currentYear + ' All right reserved';
 }
