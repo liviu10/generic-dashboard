@@ -14,7 +14,7 @@
     :height="height"
     :fit="fit"
     :position="position"
-    :imgClass="imgClass"
+    :img-class="imgClass"
     :spinnerColor="spinnerColor"
     :spinnerSize="spinnerSize"
   />

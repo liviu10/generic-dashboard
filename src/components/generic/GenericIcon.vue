@@ -4,7 +4,7 @@
 
 <script setup lang="ts">
 export interface IconProps {
-  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | undefined;
+  size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' | string | undefined;
   name: string;
   cssClass?: 'q-icon--square' | 'q-icon--round' | undefined;
 }
