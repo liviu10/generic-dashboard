@@ -18,25 +18,21 @@
     :dense="dense"
     :round="round"
   >
-    <q-list>
-      <q-item
-        v-for="item in dropdownItems"
-        :key="item.id"
-        :clickable="dropdownButtonClickable"
-        v-close-popup
-        @click="emit('onDropdownActionClick', true)"
-      >
-        <q-item-section>
-          <q-item-label>{{ item.name }}</q-item-label>
-        </q-item-section>
-      </q-item>
-    </q-list>
+    <GenericList
+      :separator="dropdownList.separator"
+      :bordered="dropdownList.bordered"
+      :itemClickable="dropdownList.itemClickable"
+      :listItems="dropdownList.listItems"
+    />
   </q-btn-dropdown>
 </template>
 
 <script setup lang="ts">
 // Import framework related utilities
 import { defineEmits } from 'vue';
+
+// Import necessary components
+import GenericList, { ListProps } from 'src/components/generic/GenericList.vue';
 
 export interface DropdownButtonProps {
   label: string | number;
@@ -56,12 +52,7 @@ export interface DropdownButtonProps {
   textColor?: string;
   dense?: boolean;
   round?: boolean;
-  dropdownItems: {
-    id: number,
-    name: string,
-  }[];
-  dropdownButtonClickable: boolean;
-
+  dropdownList: ListProps;
 }
 
 const emit = defineEmits<{

@@ -23,7 +23,9 @@
 import { defineEmits } from 'vue';
 
 // Import necessary components
-import GenericButton, { ButtonProps } from 'src/components/generic/GenericButton.vue';
+import GenericButton, {
+  ButtonProps,
+} from 'src/components/generic/GenericButton.vue';
 
 export interface BannerProps {
   inlineActions?: boolean;
