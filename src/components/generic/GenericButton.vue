@@ -25,7 +25,7 @@
 // Import framework related utilities
 import { defineEmits } from 'vue';
 
-interface ButtonProps {
+export interface ButtonProps {
   label: string | number;
   icon?: string;
   noCaps?: boolean;

@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-interface BadgeProps {
+export interface BadgeProps {
   floating?: boolean;
   multiLine?: boolean;
   label: string | number;
