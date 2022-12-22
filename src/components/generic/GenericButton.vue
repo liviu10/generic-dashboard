@@ -17,7 +17,7 @@
     :text-color="textColor"
     :dense="dense"
     :round="round"
-    @click="emit('onActionClick', true)"
+    @click="emit('onActionOk', true)"
   />
 </template>
 
@@ -26,12 +26,12 @@
 import { defineEmits } from 'vue';
 
 export interface ButtonProps {
-  label: string | number;
+  label: string | number | undefined;
   icon?: string;
   noCaps?: boolean;
   noWrap?: boolean;
   stack?: boolean;
-  type: string;
+  type: string | undefined;
   disable?: boolean;
   size?: string;
   outline?: boolean;
@@ -46,7 +46,7 @@ export interface ButtonProps {
 }
 
 const emit = defineEmits<{
-  (event: 'onActionClick', value: boolean): void;
+  (event: 'onActionOk', value: boolean): void;
 }>();
 
 withDefaults(defineProps<ButtonProps>(), {});

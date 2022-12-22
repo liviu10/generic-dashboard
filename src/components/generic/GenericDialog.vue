@@ -1,0 +1,57 @@
+<template>
+  <q-dialog
+    v-model="displayDialog"
+    :persistent="persistent"
+    :maximized="maximized"
+    :full-width="fullWidth"
+    :full-height="fullHeight"
+    :position="position"
+    :square="square"
+  >
+    <GenericCard
+      :cardTitle="card?.cardTitle"
+      :cardBody="card?.cardBody"
+      :displayActionButtons="card?.displayActionButtons"
+      :firstActionButton="{
+        label: card?.firstActionButton?.label,
+        type: card?.firstActionButton?.type
+      }"
+      :secondActionButton="{
+        label: card?.secondActionButton?.label,
+        type: card?.secondActionButton?.type
+      }"
+      @onActionClose="$emit('onActionClose', true)"
+      @onActionOk="$emit('onActionOk', true)"
+    />
+  </q-dialog>
+</template>
+
+<script setup lang="ts">
+// Import framework related utilities
+import { Ref, ref, defineEmits } from 'vue';
+
+// Import necessary components
+import GenericCard, { CardProps } from 'src/components/generic/GenericCard.vue';
+
+export interface DialogProps {
+  displayDialog: boolean;
+  persistent: boolean;
+  maximized?: boolean;
+  fullWidth?: boolean;
+  fullHeight?: boolean;
+  position?: 'standard' | 'top' | 'right' | 'bottom' | 'left' | undefined;
+  square?: boolean;
+  card: CardProps
+}
+
+let displayDialog: Ref<boolean> = ref(false);
+displayDialog.value = true;
+defineEmits<{
+  (event: 'onActionClose', value: boolean): void;
+  (event: 'onActionOk', value: boolean): void;
+}>();
+
+withDefaults(defineProps<DialogProps>(), {});
+</script>
+
+<style lang="scss" scoped></style>
