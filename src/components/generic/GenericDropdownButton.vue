@@ -28,9 +28,6 @@
 </template>
 
 <script setup lang="ts">
-// Import framework related utilities
-import { defineEmits } from 'vue';
-
 // Import necessary components
 import GenericList, { ListProps } from 'src/components/generic/GenericList.vue';
 
@@ -54,10 +51,6 @@ export interface DropdownButtonProps {
   round?: boolean;
   dropdownList: ListProps;
 }
-
-const emit = defineEmits<{
-  (event: 'onDropdownActionClick', value: boolean): void;
-}>();
 
 withDefaults(defineProps<DropdownButtonProps>(), {});
 </script>
