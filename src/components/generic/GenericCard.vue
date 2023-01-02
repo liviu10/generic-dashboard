@@ -39,7 +39,7 @@
 // Import framework related utilities
 import { defineEmits } from 'vue';
 
-// Import necessary components
+// Import necessary components and interfaces
 import GenericButton, { ButtonProps } from 'src/components/generic/GenericButton.vue';
 
 export interface CardProps {

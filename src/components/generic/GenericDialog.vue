@@ -30,7 +30,7 @@
 // Import framework related utilities
 import { Ref, ref, defineEmits } from 'vue';
 
-// Import necessary components
+// Import necessary components and interfaces
 import GenericCard, { CardProps } from 'src/components/generic/GenericCard.vue';
 
 export interface DialogProps {

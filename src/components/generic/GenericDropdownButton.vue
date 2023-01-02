@@ -28,7 +28,7 @@
 </template>
 
 <script setup lang="ts">
-// Import necessary components
+// Import necessary components and interfaces
 import GenericList, { ListProps } from 'src/components/generic/GenericList.vue';
 
 export interface DropdownButtonProps {
