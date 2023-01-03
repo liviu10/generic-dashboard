@@ -26,7 +26,7 @@
 import { defineEmits } from 'vue';
 
 export interface ButtonProps {
-  label: string | number | undefined;
+  label?: string | number;
   icon?: string;
   noCaps?: boolean;
   noWrap?: boolean;
