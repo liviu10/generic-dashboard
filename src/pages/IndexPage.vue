@@ -1,15 +1,16 @@
 <template>
   <q-page class="row items-center justify-evenly">
     <GenericTable
-      :data="getGenericApiResponse"
+      :data="getAllRecords"
       :fullscreen="false"
       :loading="loadGenericTable"
       :bordered="true"
       :square="true"
       :separator="'cell'"
       :displayTitle="true"
-      :title="'Generic table'"
-      :displayActionColumn="true"
+      :displayActionColumn="getAllRecords ? true : false"
+      :resourceTitle="getResourceTitle"
+      :noDataLabel="getNoDataMessage"
     />
   </q-page>
 </template>
@@ -18,17 +19,23 @@
 import GenericTable from 'src/components/generic/GenericTable.vue';
 
 import { Ref, ref, onMounted, computed } from 'vue';
-import { useGenericStore } from 'src/stores/generic-store';
+import { useAcceptedDomainStore } from 'src/stores/accepted-domain';
 
 let loadGenericTable: Ref<boolean> = ref(false);
-const store = useGenericStore();
-const getGenericApiResponse = computed(() => {
-  return store.getGenericApiResponse;
+const store = useAcceptedDomainStore();
+const getAllRecords = computed(() => {
+  return store.getAllRecords;
+});
+const getResourceTitle = computed(() => {
+  return store.getResourceTitle;
+});
+const getNoDataMessage = computed(() => {
+  return store.getNoDataMessage;
 });
 
 onMounted(() => {
   loadGenericTable.value = true;
-  store.fetchGenericApiResponse();
+  store.fetchAllRecords();
   loadGenericTable.value = false;
 });
 </script>

@@ -4,13 +4,14 @@
     :fullscreen="fullscreen"
     :loading="loading"
     :square="square"
+    :no-data-label="noDataLabel ? noDataLabel : 'Loading resource! Please wait!'"
   >
     <template v-slot:loading>
       <GenericLoading :showing="true" />
     </template>
-    <template v-slot:top="props">
+    <template v-slot:top="props" v-if="data.records">
       <div v-if="displayTitle">
-        {{ data.title }}
+        {{ resourceTitle }}
       </div>
       <div>
         <GenericButton
@@ -29,7 +30,7 @@
         <q-th v-for="col in props.cols" :key="col.id">
           {{ displayColumnName(col.name) }}
         </q-th>
-        <q-th v-if="displayActionColumn"> Actions </q-th>
+        <q-th v-if="data.records && displayActionColumn"> Actions </q-th>
       </q-tr>
     </template>
     <template v-slot:body="props">
@@ -37,9 +38,9 @@
         <q-td v-for="row in props.row" :key="row.id">
           {{ row }}
         </q-td>
-        <q-td v-if="displayActionColumn">
-          <GenericButton :label="'Add'" :type="'button'" />
-          <GenericButton :label="'Del'" :type="'button'" />
+        <q-td v-if="data.records && displayActionColumn">
+          <GenericButton :icon="'edit'" :type="'button'" />
+          <GenericButton :icon="'delete'" :type="'button'" />
         </q-td>
       </q-tr>
     </template>
@@ -50,7 +51,7 @@
 // Import framework related utilities
 
 // Import necessary components and interfaces
-import { ApiResponseInterface } from 'src/stores/generic-store';
+import { ApiResponseInterface } from 'src/stores/accepted-domain';
 import GenericLoading from 'src/components/generic/GenericLoading.vue';
 import GenericButton from 'src/components/generic/GenericButton.vue';
 
@@ -73,6 +74,9 @@ export interface TableProps {
   bordered?: boolean;
   square: boolean;
   displayActionColumn: boolean;
+  noDataLabel?: string;
+  resourceTitle?: string;
+  loadingLabel?: string;
 }
 
 // Display and format the column name
