@@ -4,12 +4,22 @@
     :fullscreen="fullscreen"
     :loading="loading"
     :square="square"
-    :no-data-label="noDataLabel ? noDataLabel : 'Loading resource! Please wait!'"
+    :no-data-label="
+      noDataLabel ? noDataLabel : 'Loading resource! Please wait!'
+    "
   >
     <template v-slot:loading>
       <GenericLoading :showing="true" />
     </template>
     <template v-slot:top="props" v-if="data.records">
+      <div v-if="displayActionCreate">
+        <GenericButton
+          :icon="'add'"
+          :label="'Create'"
+          :type="'button'"
+          @click="$emit('onActionCreate', true)"
+        />
+      </div>
       <div v-if="displayTitle">
         {{ resourceTitle }}
       </div>
@@ -39,8 +49,24 @@
           {{ row }}
         </q-td>
         <q-td v-if="data.records && displayActionColumn">
-          <GenericButton :icon="'edit'" :type="'button'" />
-          <GenericButton :icon="'delete'" :type="'button'" />
+          <GenericButton
+            v-if="displayActionShow"
+            :icon="'visibility'"
+            :type="'button'"
+            @click="$emit('onActionShow', props.row.id)"
+          />
+          <GenericButton
+            v-if="displayActionEdit"
+            :icon="'edit'"
+            :type="'button'"
+            @onActionEdit="$emit('onActionEdit', props.row.id)"
+          />
+          <GenericButton
+            v-if="displayActionDelete"
+            :icon="'delete'"
+            :type="'button'"
+            @onActionDelete="$emit('onActionDelete', props.row.id)"
+          />
         </q-td>
       </q-tr>
     </template>
@@ -49,6 +75,7 @@
 
 <script setup lang="ts">
 // Import framework related utilities
+import { defineEmits } from 'vue';
 
 // Import necessary components and interfaces
 import { ApiResponseInterface } from 'src/stores/accepted-domain';
@@ -56,33 +83,45 @@ import GenericLoading from 'src/components/generic/GenericLoading.vue';
 import GenericButton from 'src/components/generic/GenericButton.vue';
 
 export interface TableProps {
-  data: ApiResponseInterface['data'];
-  loading: boolean;
-  iconFirstPage?: string;
-  iconPrevPage?: string;
-  iconNextPage?: string;
-  iconLastPage?: string;
-  displayTitle?: boolean;
-  title?: string | undefined;
-  fullscreen?: boolean;
-  rowsPerPageLabel?: string;
-  rowsPerPageOptions?: number[];
-  color?: string;
-  dense?: boolean;
-  dark?: boolean;
-  flat?: boolean;
   bordered?: boolean;
-  square: boolean;
+  color?: string;
+  dark?: boolean;
+  data: ApiResponseInterface['data'];
+  dense?: boolean;
   displayActionColumn: boolean;
+  displayActionCreate: boolean;
+  displayActionDelete: boolean;
+  displayActionEdit: boolean;
+  displayActionShow: boolean;
+  displayTitle?: boolean;
+  flat?: boolean;
+  fullscreen?: boolean;
+  iconFirstPage?: string;
+  iconLastPage?: string;
+  iconNextPage?: string;
+  iconPrevPage?: string;
+  loading: boolean;
+  loadingLabel?: string;
   noDataLabel?: string;
   resourceTitle?: string;
-  loadingLabel?: string;
+  rowsPerPageLabel?: string;
+  rowsPerPageOptions?: number[];
+  square: boolean;
+  title?: string | undefined;
 }
 
 // Display and format the column name
 function displayColumnName(columnName: string): string {
   return columnName.charAt(0).toUpperCase() + columnName.slice(1);
 }
+
+// Emit events for action create, show, edit and delete
+defineEmits<{
+  (event: 'onActionCreate', value: true): void;
+  (event: 'onActionShow', rowId: ApiResponseInterface['data']): void;
+  (event: 'onActionEdit', rowId: ApiResponseInterface['data']): void;
+  (event: 'onActionDelete', rowId: ApiResponseInterface['data']): void;
+}>();
 
 withDefaults(defineProps<TableProps>(), {});
 </script>

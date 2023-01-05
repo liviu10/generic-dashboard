@@ -68,6 +68,4 @@ const emit = defineEmits<{
 withDefaults(defineProps<CardProps>(), {});
 </script>
 
-<style lang="scss" scoped>
-@import 'src/css/utilities/_rem_convertor.scss';
-</style>
+<style lang="scss" scoped></style>

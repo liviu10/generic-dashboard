@@ -1,16 +1,20 @@
 <template>
   <q-page class="row items-center justify-evenly">
     <GenericTable
+      :bordered="true"
       :data="getAllRecords"
+      :displayActionColumn="getAllRecords ? true : false"
+      :displayActionCreate="true"
+      :displayActionDelete="true"
+      :displayActionEdit="true"
+      :displayActionShow="true"
+      :displayTitle="true"
       :fullscreen="false"
       :loading="loadGenericTable"
-      :bordered="true"
-      :square="true"
-      :separator="'cell'"
-      :displayTitle="true"
-      :displayActionColumn="getAllRecords ? true : false"
-      :resourceTitle="getResourceTitle"
       :noDataLabel="getNoDataMessage"
+      :resourceTitle="getResourceTitle"
+      :separator="'cell'"
+      :square="true"
     />
   </q-page>
 </template>

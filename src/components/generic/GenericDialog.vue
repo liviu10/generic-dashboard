@@ -14,11 +14,11 @@
       :displayActionButtons="card?.displayActionButtons"
       :firstActionButton="{
         label: card?.firstActionButton?.label,
-        type: card?.firstActionButton?.type
+        type: card?.firstActionButton?.type,
       }"
       :secondActionButton="{
         label: card?.secondActionButton?.label,
-        type: card?.secondActionButton?.type
+        type: card?.secondActionButton?.type,
       }"
       @onActionClose="$emit('onActionClose', true)"
       @onActionOk="$emit('onActionOk', true)"
@@ -41,7 +41,7 @@ export interface DialogProps {
   fullHeight?: boolean;
   position?: 'standard' | 'top' | 'right' | 'bottom' | 'left' | undefined;
   square?: boolean;
-  card: CardProps
+  card: CardProps;
 }
 
 let displayDialog: Ref<boolean> = ref(false);
