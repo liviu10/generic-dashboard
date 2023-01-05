@@ -82,10 +82,11 @@ let navigationBarLinks: Ref<
     title: string;
     caption?: string;
     icon?: string;
-    link: string;
+    link?: string;
     submenu?: {
       id: number;
       title: string;
+      link: string;
     }[];
   }[]
 > = ref([
@@ -99,47 +100,56 @@ let navigationBarLinks: Ref<
     title: 'Configurations',
     caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     icon: 'construction',
-    link: '/admin/configurations',
     submenu: [
       {
         id: 1,
         title: 'Account types',
+        link: '/admin/configurations/account-types',
       },
       {
         id: 2,
         title: 'Geography',
+        link: '/admin/configurations/geography',
       },
       {
         id: 3,
         title: 'Companies',
+        link: '/admin/configurations/companies',
       },
       {
         id: 4,
         title: 'Currency codes',
+        link: '/admin/configurations/currency-codes',
       },
       {
         id: 5,
         title: 'Document types',
+        link: '/admin/configurations/document-types',
       },
       {
         id: 6,
         title: 'Economic activities',
+        link: '/admin/configurations/economic-activities',
       },
       {
         id: 7,
         title: 'Product types',
+        link: '/admin/configurations/product-types',
       },
       {
         id: 8,
         title: 'Unit of measurements',
+        link: '/admin/configurations/unit-of-measurements',
       },
       {
         id: 9,
         title: 'Vat types',
+        link: '/admin/configurations/vat-types',
       },
       {
         id: 10,
         title: 'Warehouse types',
+        link: '/admin/configurations/warehouse-types',
       }
     ]
   },
@@ -147,23 +157,26 @@ let navigationBarLinks: Ref<
     title: 'Files',
     caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     icon: 'folder',
-    link: '/admin/files',
     submenu: [
       {
         id: 1,
         title: 'Accounts',
+        link: '/admin/files/accounts',
       },
       {
         id: 2,
         title: 'Clients',
+        link: '/admin/files/clients',
       },
       {
         id: 3,
         title: 'Products',
+        link: '/admin/files/products',
       },
       {
         id: 4,
         title: 'Suppliers',
+        link: '/admin/files/suppliers',
       }
     ]
   },
@@ -171,27 +184,31 @@ let navigationBarLinks: Ref<
     title: 'Operations',
     caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     icon: 'compare_arrows',
-    link: '/admin/operations',
     submenu: [
       {
         id: 1,
         title: 'Cash and Bank register',
+        link: '/admin/operations/cash-and-bank-register',
       },
       {
         id: 2,
         title: 'Consumption receipts',
+        link: '/admin/operations/consumption-receipts',
       },
       {
         id: 3,
         title: 'Invoices',
+        link: '/admin/operations/invoices',
       },
       {
         id: 4,
         title: 'Sales invoices',
+        link: '/admin/operations/sales-invoices',
       },
       {
         id: 5,
         title: 'Shipping notes',
+        link: '/admin/operations/shipping-notes',
       }
     ]
   },
@@ -199,19 +216,21 @@ let navigationBarLinks: Ref<
     title: 'Settings',
     caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     icon: 'settings',
-    link: '/admin/settings',
     submenu: [
       {
         id: 1,
         title: 'Accepted domains',
+        link: '/admin/settings/accepted-domains',
       },
       {
         id: 2,
         title: 'Errors and notifications',
+        link: '/admin/settings/errors-and-notifications',
       },
       {
         id: 3,
         title: 'Users',
+        link: '/admin/settings/users',
       }
     ]
   },
@@ -219,15 +238,16 @@ let navigationBarLinks: Ref<
     title: 'Connect',
     caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
     icon: 'connect_without_contact',
-    link: '/admin/connect',
     submenu: [
       {
         id: 1,
         title: 'Contact me',
+        link: '/admin/connect/contact-me',
       },
       {
         id: 2,
         title: 'Newsletter campaigns',
+        link: '/admin/connect/newsletter-campaigns',
       }
     ]
   },

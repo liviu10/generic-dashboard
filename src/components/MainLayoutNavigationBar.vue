@@ -15,7 +15,7 @@
       :key="item.id"
       clickable
       tag="a"
-      :href="link"
+      :href="item.link"
       dense
     >
       <q-item-section>
@@ -34,6 +34,7 @@ export interface NavigationBarProps {
   submenu?: {
     id: number;
     title: string;
+    link: string;
   }[];
 }
 withDefaults(defineProps<NavigationBarProps>(), {
