@@ -86,10 +86,40 @@ let navigationBarLinks: Ref<
   }[]
 > = ref([
   {
-    title: 'Documentation',
+    title: 'Home',
     caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
-    icon: 'school',
-    link: '#',
+    icon: 'home',
+    link: '/',
+  },
+  {
+    title: 'Configurations',
+    caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    icon: 'construction',
+    link: '/admin/configurations',
+  },
+  {
+    title: 'Files',
+    caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    icon: 'folder',
+    link: '/admin/files',
+  },
+  {
+    title: 'Operations',
+    caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    icon: 'compare_arrows',
+    link: '/admin/operations',
+  },
+  {
+    title: 'Settings',
+    caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    icon: 'settings',
+    link: '/admin/settings',
+  },
+  {
+    title: 'Connect',
+    caption: 'Lorem ipsum dolor sit amet consectetur adipisicing elit.',
+    icon: 'connect_without_contact',
+    link: '/admin/connect',
   },
 ]);
 function toggleLeftDrawer() {

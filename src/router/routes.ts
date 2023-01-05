@@ -13,6 +13,46 @@ const routes: RouteRecordRaw[] = [
           title: 'Home page',
         },
       },
+      {
+        path: '/admin/configurations',
+        name: 'ConfigurationsPage',
+        component: () => import('pages/Configurations/IndexPage.vue'),
+        meta: {
+          title: 'Configurations page',
+        },
+      },
+      {
+        path: '/admin/files',
+        name: 'FilesPage',
+        component: () => import('pages/Files/IndexPage.vue'),
+        meta: {
+          title: 'Files page',
+        },
+      },
+      {
+        path: '/admin/operations',
+        name: 'OperationsPage',
+        component: () => import('pages/Operations/IndexPage.vue'),
+        meta: {
+          title: 'Operations page',
+        },
+      },
+      {
+        path: '/admin/settings',
+        name: 'SettingsPage',
+        component: () => import('pages/Settings/IndexPage.vue'),
+        meta: {
+          title: 'Settings page',
+        },
+      },
+      {
+        path: '/admin/connect',
+        name: 'ConnectPage',
+        component: () => import('pages/Connect/IndexPage.vue'),
+        meta: {
+          title: 'Connect page',
+        },
+      },
     ],
   },
 
