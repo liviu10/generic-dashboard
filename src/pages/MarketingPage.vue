@@ -10,12 +10,16 @@
 import { computed, onMounted } from 'vue';
 
 // Import pinia store
-import { useWarehouseTypeStore } from 'src/stores/warehouse-type';
+// import { useContactMeStore } from 'src/stores/contact';
+import { useNewsletterStore } from 'src/stores/newsletter';
 
 // Instantiate pinia store
-const warehouseTypeStore = useWarehouseTypeStore();
-const getAllRecords = computed(() => warehouseTypeStore.getAllRecords);
-onMounted(() => warehouseTypeStore.fetchAllRecords());
+// const contactMeStore = useContactMeStore();
+const newsletterStore = useNewsletterStore();
+// const getAllRecords = computed(() => contactMeStore.getAllRecords);
+const getAllRecords = computed(() => newsletterStore.getAllRecords);
+// onMounted(() => contactMeStore.fetchAllRecords());
+onMounted(() => newsletterStore.fetchAllRecords());
 </script>
 
 <style lang="scss" scoped></style>

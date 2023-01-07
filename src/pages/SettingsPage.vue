@@ -10,12 +10,20 @@
 import { computed, onMounted } from 'vue';
 
 // Import pinia store
-import { useWarehouseTypeStore } from 'src/stores/warehouse-type';
+// import { useAcceptedDomainStore } from 'src/stores/accepted-domain';
+// import { useErrorAndNotificationStore } from 'src/stores/error-and-notification';
+import { useUserStore } from 'src/stores/user';
 
 // Instantiate pinia store
-const warehouseTypeStore = useWarehouseTypeStore();
-const getAllRecords = computed(() => warehouseTypeStore.getAllRecords);
-onMounted(() => warehouseTypeStore.fetchAllRecords());
+// const acceptedDomainStore = useAcceptedDomainStore();
+// const errorAndNotificationStore = useErrorAndNotificationStore();
+const userStore = useUserStore();
+// const getAllRecords = computed(() => acceptedDomainStore.getAllRecords);
+// const getAllRecords = computed(() => errorAndNotificationStore.getAllRecords);
+const getAllRecords = computed(() => userStore.getAllRecords);
+// onMounted(() => acceptedDomainStore.fetchAllRecords());
+// onMounted(() => errorAndNotificationStore.fetchAllRecords());
+onMounted(() => userStore.fetchAllRecords());
 </script>
 
 <style lang="scss" scoped></style>

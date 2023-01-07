@@ -6,9 +6,9 @@ const apiBaseUrl =
   process.env.NODE_ENV === 'development'
     ? process.env.DEV_API_BASE_URL
     : process.env.PROD_API_BASE_URL;
-const apiEndpointUrl = '/admin/settings/accepted-domains'
+const apiEndpointUrl = '/admin/connect/contact-me'
 
-export const useAcceptedDomainStore = defineStore('acceptedDomainStore', {
+export const useContactMeStore = defineStore('contactMeStore', {
   state: () => ({
     allRecords: {} as ApiResponseInterface['data'],
     resourceTitle: undefined,

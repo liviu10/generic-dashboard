@@ -6,9 +6,9 @@ const apiBaseUrl =
   process.env.NODE_ENV === 'development'
     ? process.env.DEV_API_BASE_URL
     : process.env.PROD_API_BASE_URL;
-const apiEndpointUrl = '/admin/settings/accepted-domains'
+const apiEndpointUrl = '/admin/files/suppliers'
 
-export const useAcceptedDomainStore = defineStore('acceptedDomainStore', {
+export const useSupplierStore = defineStore('supplierStore', {
   state: () => ({
     allRecords: {} as ApiResponseInterface['data'],
     resourceTitle: undefined,
