@@ -24,7 +24,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/admin/files',
         name: 'FilesPage',
-        component: () => import('pages/Files/IndexPage.vue'),
+        component: () => import('pages/FilesPage.vue'),
         meta: {
           title: 'Files page',
         },
@@ -32,7 +32,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/admin/operations',
         name: 'OperationsPage',
-        component: () => import('pages/Operations/IndexPage.vue'),
+        component: () => import('pages/OperationsPage.vue'),
         meta: {
           title: 'Operations page',
         },
@@ -40,17 +40,17 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/admin/settings',
         name: 'SettingsPage',
-        component: () => import('pages/Settings/IndexPage.vue'),
+        component: () => import('pages/SettingsPage.vue'),
         meta: {
           title: 'Settings page',
         },
       },
       {
-        path: '/admin/connect',
-        name: 'ConnectPage',
-        component: () => import('pages/Connect/IndexPage.vue'),
+        path: '/admin/marketing',
+        name: 'MarketingPage',
+        component: () => import('pages/MarketingPage.vue'),
         meta: {
-          title: 'Connect page',
+          title: 'Marketing page',
         },
       },
     ],
