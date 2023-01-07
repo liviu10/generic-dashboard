@@ -16,7 +16,7 @@ const routes: RouteRecordRaw[] = [
       {
         path: '/admin/configurations',
         name: 'ConfigurationsPage',
-        component: () => import('pages/Configurations/IndexPage.vue'),
+        component: () => import('pages/ConfigurationsPage.vue'),
         meta: {
           title: 'Configurations page',
         },

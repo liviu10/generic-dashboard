@@ -30,7 +30,7 @@ export interface NavigationBarProps {
   title: string;
   caption?: string;
   icon?: string;
-  link: string;
+  link?: string;
   submenu?: {
     id: number;
     title: string;
