@@ -1,7 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly">
     Marketing page
-    {{ getAllRecords }}
+    {{ getSingleRecords }}
   </q-page>
 </template>
 
@@ -10,16 +10,13 @@
 import { computed, onMounted } from 'vue';
 
 // Import pinia store
-// import { useContactMeStore } from 'src/stores/contact';
-import { useNewsletterStore } from 'src/stores/newsletter';
+import { useMarketingStore } from 'src/stores/marketing';
 
 // Instantiate pinia store
-// const contactMeStore = useContactMeStore();
-const newsletterStore = useNewsletterStore();
-// const getAllRecords = computed(() => contactMeStore.getAllRecords);
-const getAllRecords = computed(() => newsletterStore.getAllRecords);
-// onMounted(() => contactMeStore.fetchAllRecords());
-onMounted(() => newsletterStore.fetchAllRecords());
+const marketingStore = useMarketingStore();
+// const getAllRecords = computed(() => marketingStore.getAllRecords);
+const getSingleRecords = computed(() => marketingStore.getSingleRecord );
+onMounted(() => marketingStore.fetchAllOrSingle('newsletter-campaigns', 1));
 </script>
 
 <style lang="scss" scoped></style>

@@ -1,7 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly">
     Operations page
-    {{ getAllRecords }}
+    {{ getSingleRecords }}
   </q-page>
 </template>
 
@@ -10,28 +10,13 @@
 import { computed, onMounted } from 'vue';
 
 // Import pinia store
-// import { useCashAndBankRegisterStore } from 'src/stores/cash-and-bank-register';
-// import { useConsumptionReceiptStore } from 'src/stores/consumption-receipt';
-// import { useInvoiceStore } from 'src/stores/invoice';
-// import { useSaleInvoiceStore } from 'src/stores/sale-invoice';
-import { useShippingNoteStore } from 'src/stores/shipping-note';
+import { useOperationStore } from 'src/stores/operations';
 
 // Instantiate pinia store
-// const cashAndBankRegisterStore = useCashAndBankRegisterStore();
-// const consumptionReceiptStore = useConsumptionReceiptStore();
-// const invoiceStore = useInvoiceStore();
-// const saleInvoiceStore = useSaleInvoiceStore();
-const shippingNoteStore = useShippingNoteStore();
-// const getAllRecords = computed(() => cashAndBankRegisterStore.getAllRecords);
-// const getAllRecords = computed(() => consumptionReceiptStore.getAllRecords);
-// const getAllRecords = computed(() => invoiceStore.getAllRecords);
-// const getAllRecords = computed(() => saleInvoiceStore.getAllRecords);
-const getAllRecords = computed(() => shippingNoteStore.getAllRecords);
-// onMounted(() => cashAndBankRegisterStore.fetchAllRecords());
-// onMounted(() => consumptionReceiptStore.fetchAllRecords());
-// onMounted(() => invoiceStore.fetchAllRecords());
-// onMounted(() => saleInvoiceStore.fetchAllRecords());
-onMounted(() => shippingNoteStore.fetchAllRecords());
+const operationStore = useOperationStore();
+// const getAllRecords = computed(() => operationStore.getAllRecords);
+const getSingleRecords = computed(() => operationStore.getSingleRecord );
+onMounted(() => operationStore.fetchAllOrSingle('cash-and-bank-register', 1));
 </script>
 
 <style lang="scss" scoped></style>

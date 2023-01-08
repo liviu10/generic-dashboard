@@ -1,7 +1,7 @@
 <template>
   <q-page class="row items-center justify-evenly">
     Files page
-    {{ getAllRecords }}
+    {{ getSingleRecords }}
   </q-page>
 </template>
 
@@ -10,24 +10,13 @@
 import { computed, onMounted } from 'vue';
 
 // Import pinia store
-// import { useAccountStore } from 'src/stores/account';
-// import { useClientStore } from 'src/stores/client';
-// import { useProductStore } from 'src/stores/product';
-import { useSupplierStore } from 'src/stores/supplier';
+import { useFileStore } from 'src/stores/files';
 
 // Instantiate pinia store
-// const accountStore = useAccountStore();
-// const clientStore = useClientStore();
-// const productStore = useProductStore();
-const supplierStore = useSupplierStore();
-// const getAllRecords = computed(() => accountStore.getAllRecords);
-// const getAllRecords = computed(() => clientStore.getAllRecords);
-// const getAllRecords = computed(() => productStore.getAllRecords);
-const getAllRecords = computed(() => supplierStore.getAllRecords);
-// onMounted(() => accountStore.fetchAllRecords());
-// onMounted(() => clientStore.fetchAllRecords());
-// onMounted(() => productStore.fetchAllRecords());
-onMounted(() => supplierStore.fetchAllRecords());
+const fileStore = useFileStore();
+// const getAllRecords = computed(() => fileStore.getAllRecords);
+const getSingleRecords = computed(() => fileStore.getSingleRecord );
+onMounted(() => fileStore.fetchAllOrSingle('accounts', 1));
 </script>
 
 <style lang="scss" scoped></style>

@@ -78,7 +78,7 @@
 import { defineEmits } from 'vue';
 
 // Import necessary components and interfaces
-import { ApiResponseInterface } from 'src/stores/accepted-domain';
+import { StoreApiResponseInterface } from 'src/interfaces/StoreApiResponseInterface';
 import GenericLoading from 'src/components/generic/GenericLoading.vue';
 import GenericButton from 'src/components/generic/GenericButton.vue';
 
@@ -86,7 +86,7 @@ export interface TableProps {
   bordered?: boolean;
   color?: string;
   dark?: boolean;
-  data: ApiResponseInterface['data'];
+  data: StoreApiResponseInterface['data'];
   dense?: boolean;
   displayActionColumn: boolean;
   displayActionCreate: boolean;
@@ -118,9 +118,9 @@ function displayColumnName(columnName: string): string {
 // Emit events for action create, show, edit and delete
 defineEmits<{
   (event: 'onActionCreate', value: true): void;
-  (event: 'onActionShow', rowId: ApiResponseInterface['data']): void;
-  (event: 'onActionEdit', rowId: ApiResponseInterface['data']): void;
-  (event: 'onActionDelete', rowId: ApiResponseInterface['data']): void;
+  (event: 'onActionShow', rowId: StoreApiResponseInterface['data']): void;
+  (event: 'onActionEdit', rowId: StoreApiResponseInterface['data']): void;
+  (event: 'onActionDelete', rowId: StoreApiResponseInterface['data']): void;
 }>();
 
 withDefaults(defineProps<TableProps>(), {});

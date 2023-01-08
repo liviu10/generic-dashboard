@@ -16,40 +16,39 @@
       :separator="'cell'"
       :square="true"
     />
-    {{ getSingleRecord }}
   </q-page>
 </template>
 
 <script setup lang="ts">
 import GenericTable from 'src/components/generic/GenericTable.vue';
 
-import { Ref, ref, onMounted, computed } from 'vue';
-import { useAcceptedDomainStore } from 'src/stores/accepted-domain';
+// import { Ref, ref, onMounted, computed } from 'vue';
+// import { useAcceptedDomainStore } from 'src/stores/accepted-domain';
 
 let loadGenericTable: Ref<boolean> = ref(false);
-const acceptedDomainStore = useAcceptedDomainStore();
-const getAllRecords = computed(() => {
-  return acceptedDomainStore.getAllRecords;
-});
-const getSingleRecord = computed(() => {
-  return acceptedDomainStore.getSingleRecord;
-});
-const getResourceTitle = computed(() => {
-  return acceptedDomainStore.getResourceTitle;
-});
-const getNoDataMessage = computed(() => {
-  return acceptedDomainStore.getNoDataMessage;
-});
+// const acceptedDomainStore = useAcceptedDomainStore();
+// const getAllRecords = computed(() => {
+//   return acceptedDomainStore.getAllRecords;
+// });
+// const getSingleRecord = computed(() => {
+//   return acceptedDomainStore.getSingleRecord;
+// });
+// const getResourceTitle = computed(() => {
+//   return acceptedDomainStore.getResourceTitle;
+// });
+// const getNoDataMessage = computed(() => {
+//   return acceptedDomainStore.getNoDataMessage;
+// });
 
-onMounted(() => {
-  loadGenericTable.value = true;
-  acceptedDomainStore.fetchAllRecords();
-  acceptedDomainStore.createSingleRecord({
-    domain: 'cah',
-    type: 'local-environment',
-  });
-  acceptedDomainStore.fetchSingleRecord(23);
-  acceptedDomainStore.orderAllRecords('id', 'desc');
-  loadGenericTable.value = false;
-});
+// onMounted(() => {
+//   loadGenericTable.value = true;
+//   acceptedDomainStore.fetchAllRecords();
+//   acceptedDomainStore.createSingleRecord({
+//     domain: 'cah',
+//     type: 'local-environment',
+//   });
+//   acceptedDomainStore.fetchSingleRecord(23);
+//   acceptedDomainStore.orderAllRecords('id', 'desc');
+//   loadGenericTable.value = false;
+// });
 </script>

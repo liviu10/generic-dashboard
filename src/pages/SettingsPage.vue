@@ -1,7 +1,8 @@
 <template>
   <q-page class="row items-center justify-evenly">
-    Settings page
-    {{ getAllRecords }}
+    Settings page: 
+    <br>
+    {{ getSingleRecords }}
   </q-page>
 </template>
 
@@ -10,20 +11,13 @@
 import { computed, onMounted } from 'vue';
 
 // Import pinia store
-// import { useAcceptedDomainStore } from 'src/stores/accepted-domain';
-// import { useErrorAndNotificationStore } from 'src/stores/error-and-notification';
-import { useUserStore } from 'src/stores/user';
+import { useSettingStore } from 'src/stores/settings';
 
 // Instantiate pinia store
-// const acceptedDomainStore = useAcceptedDomainStore();
-// const errorAndNotificationStore = useErrorAndNotificationStore();
-const userStore = useUserStore();
-// const getAllRecords = computed(() => acceptedDomainStore.getAllRecords);
-// const getAllRecords = computed(() => errorAndNotificationStore.getAllRecords);
-const getAllRecords = computed(() => userStore.getAllRecords);
-// onMounted(() => acceptedDomainStore.fetchAllRecords());
-// onMounted(() => errorAndNotificationStore.fetchAllRecords());
-onMounted(() => userStore.fetchAllRecords());
+const settingStore = useSettingStore();
+// const getAllRecords = computed(() => settingStore.getAllRecords );
+const getSingleRecords = computed(() => settingStore.getSingleRecord );
+onMounted(() => settingStore.fetchAllOrSingle('accepted-domains', 1) );
 </script>
 
 <style lang="scss" scoped></style>

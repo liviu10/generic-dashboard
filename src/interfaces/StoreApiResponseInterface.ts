@@ -1,4 +1,4 @@
-export interface ApiResponseInterface {
+export interface StoreApiResponseInterface {
   config: object;
   data: {
     description: string;
