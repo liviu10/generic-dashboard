@@ -17,7 +17,7 @@
     :text-color="textColor"
     :dense="dense"
     :round="round"
-    @click="emit('onActionOk', true)"
+    @click="emit('onOkClickButton', true)"
   />
 </template>
 
@@ -31,7 +31,7 @@ export interface ButtonProps {
   noCaps?: boolean;
   noWrap?: boolean;
   stack?: boolean;
-  type: string | undefined;
+  type: 'button' | 'submit' | 'reset' | undefined;
   disable?: boolean;
   size?: string;
   outline?: boolean;
@@ -46,7 +46,7 @@ export interface ButtonProps {
 }
 
 const emit = defineEmits<{
-  (event: 'onActionOk', value: boolean): void;
+  (event: 'onOkClickButton', value: boolean): void;
 }>();
 
 withDefaults(defineProps<ButtonProps>(), {});

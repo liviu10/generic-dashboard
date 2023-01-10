@@ -20,8 +20,8 @@
         label: card?.secondActionButton?.label,
         type: card?.secondActionButton?.type,
       }"
-      @onActionClose="$emit('onActionClose', true)"
-      @onActionOk="$emit('onActionOk', true)"
+      @onActionClose="$emit('onCloseClickDialog', true)"
+      @onActionOk="$emit('onOkClickDialog', true)"
     />
   </q-dialog>
 </template>
@@ -47,8 +47,8 @@ export interface DialogProps {
 let displayDialog: Ref<boolean> = ref(false);
 displayDialog.value = true;
 defineEmits<{
-  (event: 'onActionClose', value: boolean): void;
-  (event: 'onActionOk', value: boolean): void;
+  (event: 'onCloseClickDialog', value: boolean): void;
+  (event: 'onOkClickDialog', value: boolean): void;
 }>();
 
 withDefaults(defineProps<DialogProps>(), {});

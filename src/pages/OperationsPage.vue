@@ -12,10 +12,13 @@ import { computed, onMounted } from 'vue';
 // Import pinia store
 import { useOperationStore } from 'src/stores/operations';
 
+// Import necessary interfaces
+import { StoreApiResponseInterface } from 'src/interfaces/StoreApiResponseInterface';
+
 // Instantiate pinia store
 const operationStore = useOperationStore();
-// const getAllRecords = computed(() => operationStore.getAllRecords);
-const getSingleRecords = computed(() => operationStore.getSingleRecord );
+// const getAllRecords = computed((): StoreApiResponseInterface['data'] => operationStore.getAllRecords);
+const getSingleRecords = computed((): StoreApiResponseInterface['data'] => operationStore.getSingleRecord );
 onMounted(() => operationStore.fetchAllOrSingle('cash-and-bank-register', 1));
 </script>
 

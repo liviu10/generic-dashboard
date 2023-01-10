@@ -12,10 +12,13 @@ import { computed, onMounted } from 'vue';
 // Import pinia store
 import { useMarketingStore } from 'src/stores/marketing';
 
+// Import necessary interfaces
+import { StoreApiResponseInterface } from 'src/interfaces/StoreApiResponseInterface';
+
 // Instantiate pinia store
 const marketingStore = useMarketingStore();
-// const getAllRecords = computed(() => marketingStore.getAllRecords);
-const getSingleRecords = computed(() => marketingStore.getSingleRecord );
+// const getAllRecords = computed((): StoreApiResponseInterface['data'] => marketingStore.getAllRecords);
+const getSingleRecords = computed((): StoreApiResponseInterface['data'] => marketingStore.getSingleRecord );
 onMounted(() => marketingStore.fetchAllOrSingle('newsletter-campaigns', 1));
 </script>
 

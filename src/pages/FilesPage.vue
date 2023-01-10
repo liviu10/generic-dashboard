@@ -12,10 +12,13 @@ import { computed, onMounted } from 'vue';
 // Import pinia store
 import { useFileStore } from 'src/stores/files';
 
+// Import necessary interfaces
+import { StoreApiResponseInterface } from 'src/interfaces/StoreApiResponseInterface';
+
 // Instantiate pinia store
 const fileStore = useFileStore();
-// const getAllRecords = computed(() => fileStore.getAllRecords);
-const getSingleRecords = computed(() => fileStore.getSingleRecord );
+// const getAllRecords = computed((): StoreApiResponseInterface['data'] => fileStore.getAllRecords);
+const getSingleRecords = computed((): StoreApiResponseInterface['data'] => fileStore.getSingleRecord);
 onMounted(() => fileStore.fetchAllOrSingle('accounts', 1));
 </script>
 

@@ -14,7 +14,7 @@
       :dark="itemDark"
       :dense="itemDense"
       :v-ripple="itemRipple"
-      @click="emit('onActionClick', true)"
+      @click="emit('onActionClickItem', true)"
     >
       <q-item-section>
         <q-item-label
@@ -56,7 +56,7 @@ export interface ListProps {
 }
 
 const emit = defineEmits<{
-  (event: 'onActionClick', value: boolean): void;
+  (event: 'onActionClickItem', value: boolean): void;
 }>();
 
 withDefaults(defineProps<ListProps>(), {});

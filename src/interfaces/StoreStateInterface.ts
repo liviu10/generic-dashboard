@@ -1,6 +1,14 @@
 export interface StoreStateInterface {
-  allRecords?: object | undefined;
-  singleRecord?: object | undefined;
+  allRecords?: {
+    description: string;
+    records: object[];
+    title: string;
+  } | undefined;
+  singleRecord?: {
+    description: string;
+    records: object[];
+    title: string;
+  } | undefined;
   resourceTitle: undefined;
   noDataMessage: undefined;
 }

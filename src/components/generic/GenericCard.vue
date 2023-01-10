@@ -23,13 +23,13 @@
         v-if="firstActionButton"
         :label="firstActionButton.label"
         :type="firstActionButton.type"
-        @click="emit('onActionClose', true)"
+        @click="emit('onCloseClickCard', true)"
       />
       <GenericButton
         v-if="secondActionButton"
         :label="secondActionButton.label"
         :type="secondActionButton.type"
-        @click="emit('onActionOk', true)"
+        @click="emit('onOkClickCard', true)"
       />
     </q-card-actions>
   </q-card>
@@ -61,8 +61,8 @@ export interface CardProps {
 }
 
 const emit = defineEmits<{
-  (event: 'onActionClose', value: boolean): void;
-  (event: 'onActionOk', value: boolean): void;
+  (event: 'onCloseClickCard', value: boolean): void;
+  (event: 'onOkClickCard', value: boolean): void;
 }>();
 
 withDefaults(defineProps<CardProps>(), {});
