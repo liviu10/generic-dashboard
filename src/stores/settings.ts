@@ -43,8 +43,13 @@ export const useSettingStore = defineStore('settingStore', {
         Object.values(ResourceName).includes(resourceName)
       ) {
         const fullApiUrl = ref('');
-        if (typeof resourceId === 'number' && resourceId && resourceId !== null) {
-          fullApiUrl.value = apiEndpointUrl + '/' + resourceName + '/' + resourceId;
+        if (
+          typeof resourceId === 'number' &&
+          resourceId &&
+          resourceId !== null
+        ) {
+          fullApiUrl.value =
+            apiEndpointUrl + '/' + resourceName + '/' + resourceId;
         } else {
           fullApiUrl.value = apiEndpointUrl + '/' + resourceName;
         }
@@ -52,9 +57,9 @@ export const useSettingStore = defineStore('settingStore', {
           .get(fullApiUrl.value)
           .then((data) => {
             if (!resourceId) {
-              this.allRecords = data.data as StoreApiResponseInterface['data'];
+              this.allRecords = data.data;
             } else {
-              this.singleRecord = data.data as StoreApiResponseInterface['data'];
+              this.singleRecord = data.data;
             }
             this.resourceTitle = data.data.title;
           })

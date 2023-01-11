@@ -26,23 +26,23 @@
 import { defineEmits } from 'vue';
 
 export interface ButtonProps {
-  label?: string | number;
+  color?: string;
+  dense?: boolean;
+  disable?: boolean;
+  flat?: boolean;
   icon?: string;
+  label?: string | number;
   noCaps?: boolean;
   noWrap?: boolean;
-  stack?: boolean;
-  type: 'button' | 'submit' | 'reset' | undefined;
-  disable?: boolean;
-  size?: string;
   outline?: boolean;
-  flat?: boolean;
-  rounded?: boolean;
-  square?: boolean;
   padding?: string;
-  color?: string;
-  textColor?: string;
-  dense?: boolean;
   round?: boolean;
+  rounded?: boolean;
+  size?: string;
+  square?: boolean;
+  stack?: boolean;
+  textColor?: string;
+  type: 'button' | 'submit' | 'reset' | undefined;
 }
 
 const emit = defineEmits<{
