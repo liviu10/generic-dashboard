@@ -1,4 +1,4 @@
-function CheckIfObjectHasProperty(objectToVerify: object, property: string) {
+function CheckIfObjectHasProperty(objectToVerify: object, property: string): boolean {
   if (typeof objectToVerify === 'object') {
     return objectToVerify.hasOwnProperty(property)
   } else {

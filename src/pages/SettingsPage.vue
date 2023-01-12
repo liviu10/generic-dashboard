@@ -14,7 +14,8 @@
       :loading="false"
       :square="true"
       :separator="'cell'"
-      :resourceTitle="getAllRecords?.title"
+      :resourceTitle="getAllRecords? getAllRecords.title : undefined"
+      :resourceDescription="getAllRecords? getAllRecords.description : undefined"
       :wrapCells="true"
     />
   </q-page>
@@ -38,7 +39,7 @@ const settingStore = useSettingStore();
 const getAllRecords = computed(
   (): StoreApiResponseInterface['data'] => settingStore.getAllRecords
 );
-onMounted(() => settingStore.fetchAllOrSingle('accepted-domains'));
+onMounted(() => settingStore.fetchAllOrSingle('user-role-types'));
 </script>
 
 <style lang="scss" scoped></style>

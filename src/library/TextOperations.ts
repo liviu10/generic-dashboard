@@ -1,4 +1,4 @@
-function CapitalizeFirstLetter(text: string) {
+function CapitalizeFirstLetter(text: string): string {
   if (typeof text === 'string') {
     if (text.indexOf('_') > -1) {
       return (text.charAt(0).toUpperCase() + text.slice(1)).replace(/_/g, ' ');

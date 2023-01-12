@@ -4,9 +4,13 @@
     :dense="dense"
     :fullscreen="fullscreen"
     :loading="loading"
-    :no-data-label="noDataLabel ? noDataLabel : 'Loading resource! Please wait!'"
+    :no-data-label="noDataLabel ? noDataLabel : defaultNoDataLabel()"
     :rows="data?.records"
-    :rows-per-page-options="rowsPerPageOptions && rowsPerPageOptions?.length > 0 ? rowsPerPageOptions : [10, 20, 30, 50, 0]"
+    :rows-per-page-options="
+      rowsPerPageOptions && rowsPerPageOptions?.length > 0
+        ? rowsPerPageOptions
+        : defaultRowsPerPageOption()
+    "
     :separator="separator"
     :square="square"
     :wrap-cells="wrapCells"
@@ -17,7 +21,7 @@
     <template v-slot:top="props" v-if="data?.records">
       <div class="table table__top">
         <div v-if="displayTitle" class="table table__top-title q-mb-sm">
-          {{ resourceTitle }}
+          {{ displayResourceTitle(resourceTitle) }}
         </div>
         <div class="table table__top-actions">
           <div v-if="displayActionCreate">
@@ -74,7 +78,7 @@
         >
           {{ row }}
         </q-td>
-        <q-td 
+        <q-td
           v-if="data?.records && displayActionColumn"
           class="table table__body-column-value"
         >
@@ -129,6 +133,11 @@ import { StoreApiResponseInterface } from 'src/interfaces/StoreApiResponseInterf
 import GenericLoading from 'src/components/generic/GenericLoading.vue';
 import GenericButton from 'src/components/generic/GenericButton.vue';
 import { CapitalizeFirstLetter } from 'src/library/TextOperations';
+import {
+  DisplayTableNoDataLabel,
+  DisplayTableRowsPerPage,
+  DisplayTableTitle,
+} from 'src/library/TableOperations';
 
 export interface TableProps {
   bordered?: boolean;
@@ -151,8 +160,9 @@ export interface TableProps {
   loading: boolean;
   loadingLabel?: string;
   noDataLabel?: string;
-  resourceTitle?: string;
-  rowsPerPageLabel?: string;
+  resourceTitle?: string | undefined;
+  resourceDescription?: string | undefined;
+  rowsPerPageLabel?: string | undefined;
   rowsPerPageOptions?: number[];
   square: boolean;
   separator: 'horizontal' | 'vertical' | 'cell' | 'none';
@@ -163,6 +173,22 @@ export interface TableProps {
 // Display and format the column name
 function displayColumnName(columnName: string): string {
   return CapitalizeFirstLetter(columnName);
+}
+
+// Display default no resource data label
+const defaultNoDataLabel = function displayResourceNoDataLabel(): string {
+  return DisplayTableNoDataLabel();
+};
+
+// Display default rows per page option
+const defaultRowsPerPageOption =
+  function displayResourceRowsPerPage(): number[] {
+    return DisplayTableRowsPerPage();
+  };
+
+// Display the resource title
+function displayResourceTitle(tableTitle: string | undefined): string {
+  return DisplayTableTitle(tableTitle);
 }
 
 // Emit events for action create, show, edit and delete
@@ -198,10 +224,11 @@ withDefaults(defineProps<TableProps>(), {});
       width: inherit;
     }
   }
-  &__header, &__body {
-    &-column-name, &-column-value {
-      padding-left: 0rem !important;
-      padding-right: 0rem !important;
+  &__header,
+  &__body {
+    &-column-name,
+    &-column-value {
+      padding: rem-convertor(4px) !important;
       text-align: center !important;
     }
   }

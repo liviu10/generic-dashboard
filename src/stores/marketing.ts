@@ -19,22 +19,16 @@ export const useMarketingStore = defineStore('marketingStore', {
       allRecords: {} as StoreApiResponseInterface['data'],
       singleRecord: {} as StoreApiResponseInterface['data'],
       resourceTitle: undefined,
+      resourceDescription: undefined,
       noDataMessage: undefined,
     };
   },
   getters: {
-    getAllRecords: (state) => {
-      return state.allRecords;
-    },
-    getSingleRecord: (state) => {
-      return state.singleRecord;
-    },
-    getResourceTitle: (state) => {
-      return state.resourceTitle;
-    },
-    getNoDataMessage: (state) => {
-      return state.noDataMessage;
-    },
+    getAllRecords: (state) => state.allRecords,
+    getSingleRecord: (state) => state.singleRecord,
+    getResourceTitle: (state) => state.resourceTitle,
+    getResourceDescription: (state) => state.resourceDescription,
+    getNoDataMessage: (state) => state.noDataMessage,
   },
   actions: {
     async fetchAllOrSingle(resourceName: string, resourceId?: number | null) {
@@ -52,11 +46,12 @@ export const useMarketingStore = defineStore('marketingStore', {
           .get(fullApiUrl.value)
           .then((data) => {
             if (!resourceId) {
-              this.allRecords = data.data as StoreApiResponseInterface['data'];
+              this.allRecords = data.data;
             } else {
-              this.singleRecord = data.data as StoreApiResponseInterface['data'];
+              this.singleRecord = data.data;
             }
             this.resourceTitle = data.data.title;
+            this.resourceDescription = data.data.description;
           })
           .catch((error) => {
             console.log(error.response);
