@@ -14,8 +14,10 @@
       :loading="false"
       :square="true"
       :separator="'cell'"
-      :resourceTitle="getAllRecords? getAllRecords.title : undefined"
-      :resourceDescription="getAllRecords? getAllRecords.description : undefined"
+      :resourceTitle="getAllRecords ? getAllRecords.title : undefined"
+      :resourceDescription="
+        getAllRecords ? getAllRecords.description : undefined
+      "
       :wrapCells="true"
     />
   </q-page>
